@@ -1,15 +1,21 @@
-Radian6 API for Java
+A Java library for using Radian6 API. 
+The project is still at initial stage of development. Please contribute.
 
 ## Features
-* Authentication on Radian6
-* Fetch River of News
+* Authentication
+* Read posts (River of News)
+* Read topic trends
 
 ## Limitations
-* API in not fully covered yet (please contribute!)
+* API coverage is partial. Please contribute to the project and add more features.
 
-## Usage
-### Login
+## Getting Started
+Radian6 API documentation is available here: <http://socialcloud.radian6.com/docs/read/Home>
+### Authentication
 ```Java
 Radian6 r6 = new Radian6("YOUR_APP_KEY");
-r6.login("YOUR_USERNAME","YOUR_PASSWORD");
+Auth auth = r6.authenticate("YOUR_USERNAME","YOUR_PASSWORD");
 ```
+
+For development updates follow me on twitter:
+[@eroispaziali](http://twitter.com/eroispaziali) 
