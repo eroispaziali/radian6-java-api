@@ -33,7 +33,7 @@ public class Radian6 implements Radian6Api {
 	
 	public final String API_ENDPOINT_PROD ="https://api.radian6.com/socialcloud/v1";
 	public final String API_ENDPOINT_DEV ="https://sandbox-insights.radian6.com/socialcloud/v1";
-	private String endpoint = API_ENDPOINT_DEV;
+	private String endpoint = API_ENDPOINT_PROD;
 
 	
 	public final String RESOURCE_AUTH = "/auth/authenticate";
@@ -104,6 +104,15 @@ public class Radian6 implements Radian6Api {
 	public Auth authenticate(String username, String password) throws Radian6Exception, IOException {
 		HttpGet request = prepareAuthRequest(username, password);
 		return (Auth) execute(request, Auth.class);
+	}
+	
+	@Override
+	public RiverOfNews fetchRiverOfNews(Auth auth, Long topicProfile, Integer mediaType, Integer hours, Integer pageIndex, Integer pageSize) throws Radian6Exception, IOException {
+		Set<Integer> mTypes = new HashSet<Integer>();
+		Set<Long> tProfiles = new HashSet<Long>();
+		mTypes.add(mediaType);
+		tProfiles.add(topicProfile);
+		return fetchRiverOfNews(auth, tProfiles, mTypes, hours, pageIndex, pageSize);
 	}
 
 	@Override
